@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>miniconda安装教程</title>
+    <link href="/2025/02/10/miniconda/"/>
+    <url>/2025/02/10/miniconda/</url>
+    
+    <content type="html"><![CDATA[<h1 id="软件安装教程"><a href="#软件安装教程" class="headerlink" title="软件安装教程"></a>软件安装教程</h1><h2 id="1-1-miniconda"><a href="#1-1-miniconda" class="headerlink" title="1.1 miniconda"></a>1.1 miniconda</h2><p>conda是一个非常优秀的python包管理工具和python环境管理工具，而miniconda是conda最小的发行版本。</p><ul><li>python包管理工具：查询、下载、安装、卸载各种第三方python包。</li><li>python环境管理工具：在同一个操作系统下，创建多个版本的python环境，各个环境之间相互独立，便于开发不同的项目。</li></ul><h3 id="1-1-1-安装"><a href="#1-1-1-安装" class="headerlink" title="1.1.1 安装"></a>1.1.1 安装</h3><p>（1）下载<br>官网：<a href="https://docs.conda.io/en/latest/miniconda.html#windows-installers">https://docs.conda.io/en/latest/miniconda.html#windows-installers</a><br>安装版本：如下图所示，这里选择python3.8版本。</p><p>（2）安装流程<br>下载完成后，双击安装包，按照默认提示，更改安装路径。注意：安装路径不要有中文！ </p><p>到如下配置界面，勾选所有，然后选择安装即可。<br><img src="/images/miniconda1.jpg" alt="miniconda"></p><h3 id="1-1-2-安装第三方python包"><a href="#1-1-2-安装第三方python包" class="headerlink" title="1.1.2 安装第三方python包"></a>1.1.2 安装第三方python包</h3><p>本实验需要用到opencv、matplotlib等第三方python包，因此介绍一下使用pip（python自带，无需下载）安装这些包的方法，大家需要熟练掌握。<br>第一次使用pip时，为了加速第三方python包的下载，需要添加pip的清华镜像源，操作如下：<br>打开cmd窗口<br>输入命令：pip install pip -U<br>输入命令：<br>pip config set global.index-url <a href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></p><p>然后可以安装第三方包，其安装命令为：”pip install 包名称”，操作如下：<br>打开cmd窗口<br>安装OpenCV包：pip install opencv-python<br>安装matplotlib包：pip install matplotlib</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术文档</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>miniconda</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>旅行日记</title>
     <link href="/2025/02/07/%E6%97%85%E8%A1%8C%E6%97%A5%E8%AE%B0/"/>
     <url>/2025/02/07/%E6%97%85%E8%A1%8C%E6%97%A5%E8%AE%B0/</url>
