@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>c++学习笔记</title>
+    <link href="/2025/02/18/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2025/02/18/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="c-笔记"><a href="#c-笔记" class="headerlink" title="c++笔记"></a>c++笔记</h1><h2 id="vscode中导入第三方库"><a href="#vscode中导入第三方库" class="headerlink" title="vscode中导入第三方库"></a>vscode中导入第三方库</h2><p>此处以SFML库为例，讲解用法</p><p>1、在官网下载该库的压缩包（认清楚c++版本）：<a href="https://www.sfml-dev.org/download/">SFML官网</a></p><p>2、将改包解压缩到合适的位置</p><p>3、修改c_cpp_properties.json文件：在includePsth中多添加一行include文件的路径</p><p>4、修改tasks.json文件：在args下面的-I下一行添加include文件夹的路径，在-L下一行添加lib文件夹的路径</p><p>5、在cpp代码中直接#include&lt;SFML&gt;即可</p><h2 id="类多维数组的创建"><a href="#类多维数组的创建" class="headerlink" title="类多维数组的创建"></a>类多维数组的创建</h2><p>先创建一个数组结构体</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ten_array</span>&#123;<br><br><span class="hljs-type">int</span> y_[<span class="hljs-number">10</span>];<br><br>&#125;;<br></code></pre></td></tr></table></figure><p>然后创建一个结构体容器</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::vector&lt;ten_array&gt; x_<br></code></pre></td></tr></table></figure><p>访问方式</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">x_[i].y_[j]<br></code></pre></td></tr></table></figure><h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理&lt;fstream&gt;"></a>文件处理&lt;fstream&gt;</h2><p>0 0 0 2 2 2 2 2 0 0<br>0 0 0 2 1 0 0 2 0 0<br>0 0 2 2 1 0 0 3 0 0<br>0 0 2 0 1 0 0 0 0 0<br>0 0 2 0 1 0 0 0 0 0<br>0 0 2 0 1 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0     </p><p>如上y数组写入csv文件中</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">std::ofstream <span class="hljs-title">outFile</span><span class="hljs-params">(<span class="hljs-string">&quot;output.csv&quot;</span>)</span></span>;<br>  <span class="hljs-keyword">if</span> (outFile.<span class="hljs-built_in">is_open</span>()) &#123;<br>​    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; row : y) &#123;<br>​      <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> val : row.y_) &#123;<br>​        outFile &lt;&lt; val &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>​      &#125;<br>​      outFile &lt;&lt; std::endl;<br>​    &#125;<br>​    outFile.<span class="hljs-built_in">close</span>();<br>​    std::cout &lt;&lt; <span class="hljs-string">&quot;Data written to output.csv&quot;</span> &lt;&lt; std::endl;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>​    std::cerr &lt;&lt; <span class="hljs-string">&quot;Unable to open file for writing&quot;</span> &lt;&lt; std::endl;<br><br>  &#125;<br></code></pre></td></tr></table></figure><h2 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术文档</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>c++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ubuntu/linux常用命令</title>
     <link href="/2025/02/10/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <url>/2025/02/10/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>

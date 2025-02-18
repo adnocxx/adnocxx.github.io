@@ -19,24 +19,24 @@
   <meta name="author" content="Fanxiao Wang">
   <meta name="keywords" content="adnocxx">
   
-    <meta name="description" content="基础的linux指令">
+    <meta name="description" content="c++太容易忘记了，记录一下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu&#x2F;linux常用命令">
-<meta property="og:url" content="http://example.com/2025/02/10/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="c++学习笔记">
+<meta property="og:url" content="http://example.com/2025/02/18/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="adnocxx">
-<meta property="og:description" content="基础的linux指令">
+<meta property="og:description" content="c++太容易忘记了，记录一下">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-10T13:38:35.000Z">
-<meta property="article:modified_time" content="2025-02-10T15:19:07.961Z">
+<meta property="article:published_time" content="2025-02-18T07:45:33.000Z">
+<meta property="article:modified_time" content="2025-02-18T07:47:45.695Z">
 <meta property="article:author" content="Fanxiao Wang">
-<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>ubuntu/linux常用命令 - adnocxx</title>
+  <title>c++学习笔记 - adnocxx</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="ubuntu/linux常用命令"></span>
+            <span id="subtitle" data-typed-text="c++学习笔记"></span>
           
         </div>
 
@@ -243,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-10 21:38" pubdate>
-          2025年2月10日 晚上
+        <time datetime="2025-02-18 15:45" pubdate>
+          2025年2月18日 下午
         </time>
       </span>
     
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          103 字
+          254 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -325,37 +325,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ubuntu/linux常用命令</h1>
+            <h1 id="seo-header">c++学习笔记</h1>
             
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>参考文章：<a target="_blank" rel="noopener" href="https://www.linuxcool.com/">linux指令大全</a><br>这里我列出本人常用指令</p>
-</blockquote>
-<h1 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h1><h3 id="重命名操作"><a href="#重命名操作" class="headerlink" title="重命名操作"></a>重命名操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> File1.cfg File2.cfg<br></code></pre></td></tr></table></figure>
+                <h1 id="c-笔记"><a href="#c-笔记" class="headerlink" title="c++笔记"></a>c++笔记</h1><h2 id="vscode中导入第三方库"><a href="#vscode中导入第三方库" class="headerlink" title="vscode中导入第三方库"></a>vscode中导入第三方库</h2><p>此处以SFML库为例，讲解用法</p>
+<p>1、在官网下载该库的压缩包（认清楚c++版本）：<a target="_blank" rel="noopener" href="https://www.sfml-dev.org/download/">SFML官网</a></p>
+<p>2、将改包解压缩到合适的位置</p>
+<p>3、修改c_cpp_properties.json文件：在includePsth中多添加一行include文件的路径</p>
+<p>4、修改tasks.json文件：在args下面的-I下一行添加include文件夹的路径，在-L下一行添加lib文件夹的路径</p>
+<p>5、在cpp代码中直接#include&lt;SFML&gt;即可</p>
+<h2 id="类多维数组的创建"><a href="#类多维数组的创建" class="headerlink" title="类多维数组的创建"></a>类多维数组的创建</h2><p>先创建一个数组结构体</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">ten_array</span>&#123;<br><br><span class="hljs-type">int</span> y_[<span class="hljs-number">10</span>];<br><br>&#125;;<br></code></pre></td></tr></table></figure>
 
-<h3 id="移动位置"><a href="#移动位置" class="headerlink" title="移动位置"></a>移动位置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> File2.cfg /etc<br></code></pre></td></tr></table></figure>
+<p>然后创建一个结构体容器</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">std::vector&lt;ten_array&gt; x_<br></code></pre></td></tr></table></figure>
 
-<h3 id="快捷方式"><a href="#快捷方式" class="headerlink" title="快捷方式"></a>快捷方式</h3><p>软链接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ln</span> -s /etc ~/desktop<br></code></pre></td></tr></table></figure>
+<p>访问方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++">x_[i].y_[j]<br></code></pre></td></tr></table></figure>
 
-<h3 id="显示文件列表"><a href="#显示文件列表" class="headerlink" title="显示文件列表"></a>显示文件列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
+<h2 id="文件处理"><a href="#文件处理" class="headerlink" title="文件处理&lt;fstream&gt;"></a>文件处理&lt;fstream&gt;</h2><p>0 0 0 2 2 2 2 2 0 0<br>0 0 0 2 1 0 0 2 0 0<br>0 0 2 2 1 0 0 3 0 0<br>0 0 2 0 1 0 0 0 0 0<br>0 0 2 0 1 0 0 0 0 0<br>0 0 2 0 1 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0<br>0 0 0 0 0 0 0 0 0 0     </p>
+<p>如上y数组写入csv文件中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">std::ofstream <span class="hljs-title">outFile</span><span class="hljs-params">(<span class="hljs-string">&quot;output.csv&quot;</span>)</span></span>;<br>  <span class="hljs-keyword">if</span> (outFile.<span class="hljs-built_in">is_open</span>()) &#123;<br>​    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; row : y) &#123;<br>​      <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> val : row.y_) &#123;<br>​        outFile &lt;&lt; val &lt;&lt; <span class="hljs-string">&quot;,&quot;</span>;<br>​      &#125;<br>​      outFile &lt;&lt; std::endl;<br>​    &#125;<br>​    outFile.<span class="hljs-built_in">close</span>();<br>​    std::cout &lt;&lt; <span class="hljs-string">&quot;Data written to output.csv&quot;</span> &lt;&lt; std::endl;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>​    std::cerr &lt;&lt; <span class="hljs-string">&quot;Unable to open file for writing&quot;</span> &lt;&lt; std::endl;<br><br>  &#125;<br></code></pre></td></tr></table></figure>
 
-<p>显示文件可读的大小</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -h<br></code></pre></td></tr></table></figure>
-
-<h3 id="以root身份打开资源管理器"><a href="#以root身份打开资源管理器" class="headerlink" title="以root身份打开资源管理器"></a>以root身份打开资源管理器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> nautilus<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h1><h3 id="网络文件"><a href="#网络文件" class="headerlink" title="网络文件"></a>网络文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget http：//<br></code></pre></td></tr></table></figure>
-
-<h3 id="安装软件包（deb文件）"><a href="#安装软件包（deb文件）" class="headerlink" title="安装软件包（deb文件）"></a>安装软件包（deb文件）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dpkg -i 文件名<br></code></pre></td></tr></table></figure>
-
-<h3 id="卸载软件包"><a href="#卸载软件包" class="headerlink" title="卸载软件包"></a>卸载软件包</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dpkg -l 文件名<br></code></pre></td></tr></table></figure>
-
-
+<h2 id="A-算法"><a href="#A-算法" class="headerlink" title="A*算法"></a>A*算法</h2>
                 
               </div>
             
@@ -388,7 +382,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ubuntu/" class="print-no-link">#ubuntu</a>
+        <a href="/tags/c/" class="print-no-link">#c++</a>
       
     </div>
   
@@ -400,8 +394,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ubuntu/linux常用命令</div>
-      <div>http://example.com/2025/02/10/ubuntu常用命令/</div>
+      <div>c++学习笔记</div>
+      <div>http://example.com/2025/02/18/c-学习笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -413,7 +407,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年2月10日</div>
+          <div>2025年2月18日</div>
         </div>
       
       
@@ -445,18 +439,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/18/c-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="c++学习笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">c++学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/10/miniconda/" title="miniconda安装教程">
-                        <span class="hidden-mobile">miniconda安装教程</span>
+                      <a href="/2025/02/10/ubuntu%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="ubuntu/linux常用命令">
+                        <span class="hidden-mobile">ubuntu/linux常用命令</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
