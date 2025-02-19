@@ -27,7 +27,7 @@
 <meta property="og:description" content="本人的ros2学习技术文档">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-06T14:52:43.000Z">
-<meta property="article:modified_time" content="2025-02-10T09:08:05.757Z">
+<meta property="article:modified_time" content="2025-02-19T15:46:17.722Z">
 <meta property="article:author" content="Fanxiao Wang">
 <meta property="article:tag" content="px4">
 <meta name="twitter:card" content="summary_large_image">
@@ -343,7 +343,16 @@
 <h2 id="常用节点bash"><a href="#常用节点bash" class="headerlink" title="常用节点bash"></a>常用节点bash</h2><h3 id="bash启动节点"><a href="#bash启动节点" class="headerlink" title="bash启动节点"></a>bash启动节点</h3><pre><code class="hljs">ros2 run &lt;package_name&gt; &lt;executable_name&gt;
                     包  节点名（功能包）
 </code></pre>
-<h3 id="bash查看节点列表"><a href="#bash查看节点列表" class="headerlink" title="bash查看节点列表"></a>bash查看节点列表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 node list<br></code></pre></td></tr></table></figure>
+<h3 id="bash查看节点列表"><a href="#bash查看节点列表" class="headerlink" title="bash查看节点列表"></a>bash查看节点列表</h3><p>查看运行中的节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 node list<br></code></pre></td></tr></table></figure>
+<p>所有可执行的节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 pkg executables<br></code></pre></td></tr></table></figure>
+
+<p>查找某个包下的节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 pkg executables | find <span class="hljs-string">&quot;&lt;package_name&gt;&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="bash查看节点信息-常用"><a href="#bash查看节点信息-常用" class="headerlink" title="bash查看节点信息(常用)"></a>bash查看节点信息(常用)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 node info &lt;node_name&gt;<br></code></pre></td></tr></table></figure>
 <h3 id="bash重映射节点名称"><a href="#bash重映射节点名称" class="headerlink" title="bash重映射节点名称"></a>bash重映射节点名称</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ros2 run turtlesim turtlesim_nod --ros-args --remap__node:=my_turtle<br></code></pre></td></tr></table></figure>
 <h1 id="功能包"><a href="#功能包" class="headerlink" title="功能包"></a>功能包</h1><h2 id="手动操作"><a href="#手动操作" class="headerlink" title="手动操作"></a>手动操作</h2><p><strong>解释</strong><br>功能包可以理解为存放节点的地方，ROS2中功能包根据编译方式的不同分为三种类型。</p>
