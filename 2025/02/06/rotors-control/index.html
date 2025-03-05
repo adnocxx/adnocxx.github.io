@@ -27,7 +27,7 @@
 <meta property="og:description" content="本人的飞控学习文档">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-06T15:43:39.000Z">
-<meta property="article:modified_time" content="2025-02-10T13:36:57.625Z">
+<meta property="article:modified_time" content="2025-03-05T13:14:53.348Z">
 <meta property="article:author" content="Fanxiao Wang">
 <meta property="article:tag" content="px4">
 <meta name="twitter:card" content="summary_large_image">
@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          731 字
+          1.5k 字
         
       </span>
     
@@ -266,7 +266,7 @@
         
         
         
-          7 分钟
+          13 分钟
         
       </span>
     
@@ -396,8 +396,60 @@ uint8 result
 <h2 id="初始化函数"><a href="#初始化函数" class="headerlink" title="初始化函数"></a>初始化函数</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>node是什么？ 怎么就转化成当前类的类型了，他又是如何传输下一个类型中的<br>topocdoscpvery是什么？ * 用来订阅集群中特定类型的所有消息，并按照飞机id存到map中。每个飞机包括位置信息，IMU数据，及他们的更新频率</p>
 <h3 id="wait-for-data"><a href="#wait-for-data" class="headerlink" title="wait_for_data"></a>wait_for_data</h3><p>这里面用了try和catch结构，然后检测all_pose_data是否执行成功get_all_pose_data函数<br>另外设置标志位has_data_</p>
 <h3 id="timer-callback"><a href="#timer-callback" class="headerlink" title="timer_callback"></a>timer_callback</h3><p>确保初始化成功，确保得到数据，然后执行main_loop_callback函数<br>头文件中的变量是全局变量？为什么每个函数中都可以用这几个参数</p>
-<h3 id="main-loop-callback"><a href="#main-loop-callback" class="headerlink" title="main_loop_callback"></a>main_loop_callback</h3><h1 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h1><p>编译单个功能包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">colcon build --packages-select rotorscontrol<br></code></pre></td></tr></table></figure>
+<h3 id="main-loop-callback"><a href="#main-loop-callback" class="headerlink" title="main_loop_callback"></a>main_loop_callback</h3><h1 id="test-wfx-cpp"><a href="#test-wfx-cpp" class="headerlink" title="test_wfx.cpp"></a>test_wfx.cpp</h1><p>在private里面声明客户端，然后实例化客户端</p>
+<pre><code class="hljs">rclcpp::Client&lt;mavros_msgs::srv::CommandBool&gt;::SharedPtr  client_px4_arm;       
+其中包括，接口类型是 CommandBool，客户端名字是px4_arm
+</code></pre>
+<p>写客户端时一定要找清楚对应的服务端，可以用指令查询</p>
+<p>   ros2 service list -t<br>   前者是名称，后者是接口类型。 </p>
+<p>在rviz的2D goal_pose中发点，我们可以检测话题内容<br>   ros2 topic echo &#x2F;goal_pose<br>   接口为[geometry_msgs&#x2F;msg&#x2F;PoseStamped]<br>控制终端输出的两种方式：</p>
+<p>   输出信息<br>   RCLCPP_INFO(this-&gt;get_logger(), “INFO”);<br>   输出报错<br>   RCLCPP_ERROR(this-&gt;get_logger(), “INFO”);</p>
+<h1 id="navigator-mode"><a href="#navigator-mode" class="headerlink" title="navigator_mode"></a>navigator_mode</h1><h2 id="h"><a href="#h" class="headerlink" title=".h"></a>.h</h2><p> 类<br>     构造函数：<br>     设置当地坐标系，位置掩码设置为位置和偏航角，初始偏航校设置为90.<br>     position_setpoint_      &#x2F;&#x2F; mavros_msgs::msg::PositionTarget position_setpoint_{}; 默认初始化</p>
+<p>std::map&lt;int, nav_msgs::msg::Odometry::SharedPtr&gt; all_pose_data_;<br>std::shared_ptr<a href="visualization::Visualization">visualization::Visualization</a> vis_ptr_;</p>
+<p>GridMap::Ptr grid_map_;</p>
+<pre><code class="hljs">只要是激活状态持续执行update_pose  
+_active是上一个激活的状态,这次激活先更新点，然后检测之前状态，
+0-1则执行on_activation 
+1-1 则执行on_active和pub_pos_cmd 
+1-0则执行on_inactivation 
+如果0-0则执行on_inactivate
+</code></pre>
+<hr>
+<pre><code class="hljs">pub_pos_cmd:检测电子围栏，符合安全标准，然后在发布position_setpoint
+update_pose::更新无人机的位姿数据，从话题 swarm_router/local_position/odom 中订阅，最终存储在all_pose_data_中
+get_all_pose_data:是dicover头文件的函数，在以上话题被使用
+print_imu:调用了topic_discover.h中的函数，订阅了imu话题，并打印了imu数据  mavros/imu/data_raw
+node_on_set_parameters_cb：传入参数列表，如果出错则失败，并且记录原因
+enable_node_watch_parameters：注册节点参数
+pub_visualization()：可视化发布的节点
+</code></pre>
+<hr>
+<pre><code class="hljs">在基类中，运行.run函数，可以根据状态来判断，在子类中，自动创建了publisher_发布者，并且在激活状态下，持续执行，也就是pub_pos_cmd函数
+第一次激活时，执行on_activation,用goal.set_x来设置，同时Vel和a都是Vector2变量，下次就可以运行发布和激活状态函数，发布的是position_setpoint_
+判断的依据是all_pose_data_[sys_id_]-&gt;pose.pose.position
+all_pose_data是在父类中得到的，有一个updata_pose函数
+在updata中，先把所有飞机的位置变量赋值给all_pose_tmp,然后检测是否为空，然后迭代，msg为空的，则不进行操作，最后把位置存储在all_pose_data_中
+all_pose_data_[sys_id_]-&gt;pose.pose.position.x这个输入无人机id，可以得到无人机现在的位置
+</code></pre>
+<hr>
+<p>在添加navigator模式时，要删除build文件夹下的构建文件</p>
+<pre><code class="hljs">在掩码中0b000111111111 ，每一位分别代表:从右到左分别是 xyz vx vy vz aorfx aorfy aorfz yaw yaw_rate
+0b111111111000，忽略除了 PX PY PZ 以外的指令，如果想额外控制机头方向，可以设置为 0b101111111000。
+
+offoboard 每20ms发送一次航点，那么每个航点走的角度就是 t总/0.05=发布航点的次数，那么一次变化的角度就是 360/总数
+
+绕一圈的时间设置为10s，半径5m，可以控制的很好，不好只是速度问题。
+
+/uav1/mavros/setpoint_raw/target_local
+
+把控制时间都改成t，这样好计算函数，比如20ms周期，t写成t=t+0.05就行
+
+    goal_x=-5+5*std::sin(-M_PI/5*t);
+goal_y=5*std::cos(-M_PI/5*t);
+yaw = M_PI+M_PI/5*t;
+position_setpoint_.yaw = yaw;
+</code></pre>
+<p>这个函数可以以-5.0为圆心，半径为5飞一个圆，偏航角是速度方向，可以看到+角度是逆时针，-角度是顺时针</p>
 
                 
               </div>
